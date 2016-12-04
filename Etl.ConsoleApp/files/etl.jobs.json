@@ -1,0 +1,18 @@
+[{
+  "jobId": 1,
+  "extractor": {
+    "type": "CsvExtractor",
+    "dataSource": "files\\data.csv" 
+  },
+  "transformers": [],
+  "Loader": {
+    "type": "SqlLoader",
+    "database": "TestDB",
+    "table": "TestTable",
+    "mappings": [
+        {"Make":"Make"},
+        {"Model":"Model"}
+    ],
+    "datasource": "ocnnection string"
+  }
+}]
