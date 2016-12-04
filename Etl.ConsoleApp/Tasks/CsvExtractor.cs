@@ -19,7 +19,7 @@ namespace Etl.ConsoleApp.Tasks
         protected override DataTable OnExtract() {
             dynamic config = GetConfig();
             if (config.extractor == null) throw new ArgumentNullException("'extractor' missing in configuration");
-            if (config.extractor.type != this.GetType().Name) throw new ArgumentNullException($"could not find configuration for {this.GetType().Name} extractor");
+            if (config.extractor.type != this.GetType().Name) throw new ArgumentNullException(string.Format("could not find configuration for {0} extractor",GetType().Name));
             try
             {
                 return GetDataTableFromCsv(config.extractor.dataSource.ToString(), true);

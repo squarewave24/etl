@@ -15,11 +15,11 @@ namespace Etl.ConsoleApp.Framework
             var watch = new Stopwatch();
             watch.Start();
 
-            _logger.Info($"{this.GetType().Name} starting");
+            _logger.Info("{0} starting", GetType().Name);
             try {
                 return OnExtract();
             } finally {
-                _logger.Info($"{this.GetType().Name} finished in {watch.Elapsed.TotalSeconds} seconds");
+                _logger.Info("{0} finished in {1} seconds", GetType().Name, watch.Elapsed.TotalSeconds);
             }
         }
     }

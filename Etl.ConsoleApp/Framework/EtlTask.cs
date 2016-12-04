@@ -44,7 +44,7 @@ namespace Etl.ConsoleApp.Framework
                 if (job.jobId != null && Convert.ToInt32(job.jobId) == _jobId)
                     return job;
             }
-            throw new ArgumentException($"could not find a job for id: {_jobId}");
+            throw new ArgumentException(string.Format("could not find a job for id: {0}", _jobId));
 
         }
 

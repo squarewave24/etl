@@ -18,8 +18,8 @@ namespace Etl.ConsoleApp.Tasks
         public override void OnLoad(DataTable data) {
 
             dynamic config = GetConfig();
-            if (config.loader == null || config.loader.type == null || config.loader.type != this.GetType().Name)
-                throw new ArgumentException($"configuration not found for {this.GetType().Name}");
+            if (config.loader == null || config.loader.type == null || config.loader.type != GetType().Name)
+                throw new ArgumentException(string.Format("configuration not found for {0}", GetType().Name));
 
             string database = config.loader.database;
             string table = config.loader.table;
@@ -31,7 +31,7 @@ namespace Etl.ConsoleApp.Tasks
             if (string.IsNullOrEmpty(server)) throw new ArgumentNullException("server name missing in configuration");
             if (mappings == null) throw new ArgumentNullException("loader table column mappings are missing in configuration");
 
-            var connStr = $"Data Source={server}; Database={database}; Integrated Security=SSPI;";
+            var connStr = string.Format("Data Source={0}; Database={1}; Integrated Security=SSPI;", server, database);
 
             using (var conn = new SqlConnection(connStr)) {
                 conn.Open();

@@ -32,7 +32,7 @@ namespace Etl.Tests
             foreach (DataRow dataRow in dt.Rows) {
                 var sb = new StringBuilder();
                 foreach (var item in dataRow.ItemArray) {
-                    sb.Append($"{item}|");
+                    sb.Append(string.Format("{0}|", item));
                 }
                 Resolve<ILogger>().Info(sb.ToString());
             }

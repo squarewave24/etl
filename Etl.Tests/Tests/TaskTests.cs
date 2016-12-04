@@ -24,12 +24,12 @@ namespace Etl.Tests
             Assert.IsNotNull(dt);
             LogTableContents(dt);
 
-            Assert.IsTrue(dt.Rows.Count == 4, $"Expected 4 got {dt.Rows.Count}");
+            Assert.IsTrue(dt.Rows.Count == 4, string.Format("Expected 4 got {0}",dt.Rows.Count));
 
             foreach (var c in dt.Columns)
                 Resolve<ILogger>().Info("co: {0}", (c as DataColumn).ColumnName);
 
-            Assert.IsTrue(dt.Columns[0].ColumnName == "Make", $"Expected Make got {dt.Columns[0].ColumnName}");
+            Assert.IsTrue(dt.Columns[0].ColumnName == "Make", string.Format("Expected Make got {0}", dt.Columns[0].ColumnName));
             
         }
 
