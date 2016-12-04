@@ -6,12 +6,18 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Etl.ConsoleApp.Tasks
 {
     public class CsvExtractor
     {
+
+
+
+
+
         // as found on http://stackoverflow.com/questions/1050112/how-to-read-a-csv-file-into-a-net-datatable
         public static DataTable GetDataTableFromCsv(string path, bool isFirstRowHeader) {
             string header = isFirstRowHeader ? "Yes" : "No";
@@ -29,6 +35,12 @@ namespace Etl.ConsoleApp.Tasks
                 DataTable dataTable = new DataTable();
                 dataTable.Locale = CultureInfo.CurrentCulture;
                 adapter.Fill(dataTable);
+                foreach (var c in dataTable.Columns)
+                {
+                    var col = c as DataColumn;
+                    if (col != null)
+                        col.ColumnName = Regex.Replace(col.ColumnName, @"[^\u0000-\u007F]+", string.Empty);
+                }
                 return dataTable;
             }
         }
