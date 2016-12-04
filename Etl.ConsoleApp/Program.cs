@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Castle.MicroKernel.Registration;
+﻿using Castle.MicroKernel.Registration;
 using Castle.Windsor;
 using Etl.ConsoleApp.Util;
 
@@ -15,11 +10,10 @@ namespace Etl
         static void Main(string[] args) {
             RegisterIoc();
 
-            Ioc.Container.Resolve<ILogger>().Info("testing logger ");
         }
 
 
-
+       // adding loose coupling 
         private static void RegisterIoc() {
             Ioc.Container.Register(
                 Component.For<ILogger>()
