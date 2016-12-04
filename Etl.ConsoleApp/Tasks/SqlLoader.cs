@@ -18,10 +18,17 @@ namespace Etl.ConsoleApp.Tasks
             using (var conn = new SqlConnection(connStr)) {
                 conn.Open();
                 using (var bulk = new SqlBulkCopy(conn)) {
-            bulk.DestinationTableName = tableName;
+                    bulk.DestinationTableName = tableName;
+                    AddtMappings( bulk.ColumnMappings);
                     bulk.WriteToServer(data);
                 }
             }
+        }
+
+        private void AddtMappings(SqlBulkCopyColumnMappingCollection map)
+        {
+            map.Add("Make", "Make");
+            map.Add("Model", "Model");  
         }
     }
 }
