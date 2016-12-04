@@ -7,13 +7,16 @@
                 "dataSource": "./files/sampledata.csv"
             },
             "transformers": [ ],
-            "Loader": {
+            "loader": {
+                "server": ".\\Sqlexpress",
                 "type": "SqlLoader",
                 "database": "TestDB",
                 "table": "TestTable",
                 "mappings": [
-                    { "Make": "Make" },
-                    { "Model": "Model" }
+                    {"source": "Make","destination": "Make"},
+                    {"source": "Model","destination": "Model"},
+                    {"source": "Base Price","destination": "BasePrice"},
+                    {"source": "Introduced","destination": "Introduced"}
                 ],
                 "datasource": "ocnnection string"
             }
