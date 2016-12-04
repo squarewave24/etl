@@ -10,19 +10,18 @@ namespace Etl.ConsoleApp.Tasks
 {
     public class SqlLoader
     {
-        public void Load(DataSet data)
-        {
-            var connStr = "";
+        public void Load(DataSet data) {
             var tableName = "TestTable";
             var databaseName = "TestDB";
+            var serverName = ".\\sqlexpress";
+            var connStr = $"Data Source={serverName}; Database={databaseName}; Integrated Security=SSPI;";
 
             var conn = new SqlConnection(connStr);
-            var ds = new DataSet();
-            ds.Tables.Add(new DataTable(tableName));
-                using (var bulk = new SqlBulkCopy(conn))
-                {
-                    bulk.WriteToServer(data)
-                }
+            
+
+            using (var bulk = new SqlBulkCopy(conn)) {
+                bulk.WriteToServer(data.Tables[tableName]);
+            }
         }
     }
 }
