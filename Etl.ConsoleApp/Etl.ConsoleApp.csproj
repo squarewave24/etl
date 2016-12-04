@@ -68,6 +68,7 @@
     <Compile Include="Framework\IExtractor.cs" />
     <Compile Include="Util\DebugLogger.cs" />
     <Compile Include="Util\ILogger.cs" />
+    <Compile Include="Util\Ioc.cs" />
     <None Include="files\etl.jobs.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -2,6 +2,7 @@
 using System.Text;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Etl.ConsoleApp;
 using Etl.ConsoleApp.Util;
 
 namespace Etl.Tests
@@ -15,7 +16,7 @@ namespace Etl.Tests
 
         // adding loose coupling 
         private static void RegisterIoc() {
-            Etl.Ioc.Container.Register(
+            Ioc.Container.Register(
                 Component.For<ILogger>()
                 .ImplementedBy<DebugLogger>()
                 );
